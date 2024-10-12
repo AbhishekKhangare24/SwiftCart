@@ -7,15 +7,7 @@ import {
   BabyIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  CloudLightning,
   Heater,
-  Images,
-  Shirt,
-  ShirtIcon,
-  ShoppingBasket,
-  UmbrellaIcon,
-  WashingMachine,
-  WatchIcon,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useState } from "react";
@@ -24,6 +16,13 @@ import {
   fetchAllFilteredProducts,
   fetchProductDetails,
 } from "@/store/shop/products-slice";
+import { PiDress } from "react-icons/pi";
+import { SiNike, SiZara } from "react-icons/si";
+import { SiAdidas } from "react-icons/si";
+import { SiPuma } from "react-icons/si";
+import { GiLargeDress, GiRunningShoe, GiSchoolBag } from "react-icons/gi";
+import { IoShirtOutline } from "react-icons/io5";
+import { TbCircleLetterH, TbSquareRoundedLetterL } from "react-icons/tb";
 import ShoppingProductTile from "@/components/shopping-view/product-tile";
 import { useNavigate } from "react-router-dom";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
@@ -32,20 +31,20 @@ import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import { getFeatureImages } from "@/store/common-slice";
 
 const categoriesWithIcon = [
-  { id: "men", label: "Men", icon: ShirtIcon },
-  { id: "women", label: "Women", icon: CloudLightning },
+  { id: "men", label: "Men", icon: IoShirtOutline },
+  { id: "women", label: "Women", icon: PiDress },
   { id: "kids", label: "Kids", icon: BabyIcon },
-  { id: "accessories", label: "Accessories", icon: WatchIcon },
-  { id: "footwear", label: "Footwear", icon: UmbrellaIcon },
+  { id: "accessories", label: "Accessories", icon: GiSchoolBag },
+  { id: "footwear", label: "Footwear", icon: GiRunningShoe },
 ];
 
 const brandsWithIcon = [
-  { id: "nike", label: "Nike", icon: Shirt },
-  { id: "adidas", label: "Adidas", icon: WashingMachine },
-  { id: "puma", label: "Puma", icon: ShoppingBasket },
-  { id: "levi", label: "Levi's", icon: Airplay },
-  { id: "zara", label: "Zara", icon: Images },
-  { id: "h&m", label: "H&M", icon: Heater },
+  { id: "nike", label: "Nike", icon: SiNike },
+  { id: "adidas", label: "Adidas", icon: SiAdidas },
+  { id: "puma", label: "Puma", icon: SiPuma },
+  { id: "levi", label: "Levi's", icon: TbSquareRoundedLetterL },
+  { id: "zara", label: "Zara", icon: SiZara },
+  { id: "h&m", label: "H&M", icon: TbCircleLetterH },
 ];
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);

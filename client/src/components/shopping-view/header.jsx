@@ -23,6 +23,7 @@ import UserCartWrapper from "./cart-wrapper";
 import { useEffect, useState } from "react";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import { Label } from "../ui/label";
+import { TbSquareLetterSFilled } from "react-icons/tb";
 
 function MenuItems() {
   const navigate = useNavigate();
@@ -142,8 +143,9 @@ function ShoppingHeader() {
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
-          <HousePlug className="h-6 w-6" />
-          <span className="font-bold">Ecommerce</span>
+          {/* <HousePlug className="h-6 w-6" /> */}
+          <TbSquareLetterSFilled className="h-8 w-8" />
+          <span className="font-bold">Swiftkart</span>
         </Link>
         <Sheet>
           <SheetTrigger asChild>

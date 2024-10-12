@@ -9,7 +9,7 @@ function AdminHeader({ setOpen }) {
   const navigate = useNavigate();
 
   function handleLogout() {
-    // dispatch(logoutUser());
+    dispatch(logoutUser());
     dispatch(resetTokenAndCredentials());
     sessionStorage.clear();
     navigate("/auth/login");
