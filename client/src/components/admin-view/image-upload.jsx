@@ -109,7 +109,7 @@ function ProductImageUpload({
               className="text-muted-foreground hover:text-foreground"
               onClick={handleRemoveImage}
             >
-              <XIcon className="w-4 h-4" />
+              <XIcon className="w-6 h-6" />
               <span className="sr-only">Remove File</span>
             </Button>
           </div>
