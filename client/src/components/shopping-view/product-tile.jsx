@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 import { brandOptionsMap, categoryOptionsMap } from "@/config";
 import { Badge } from "../ui/badge";
 import { useState } from "react";
-import { FaShoppingCart } from "react-icons/fa"; // For cart icon
+import { FaShoppingCart } from "react-icons/fa";
 
 function ShoppingProductTile({
   product,
@@ -15,7 +15,7 @@ function ShoppingProductTile({
   const handleAddToCartClick = (productId, stock) => {
     setAddedToCart(true);
     handleAddtoCart(productId, stock);
-    setTimeout(() => setAddedToCart(false), 1000); // Reset animation state after 1 second
+    setTimeout(() => setAddedToCart(false), 2000);
   };
 
   return (

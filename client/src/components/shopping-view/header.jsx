@@ -30,32 +30,49 @@ function MenuItems() {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const activeCategory = searchParams.get("category");
+  const searchKeyword = searchParams.get("keyword");
+
   function handleNavigate(getCurrentMenuItem) {
     sessionStorage.removeItem("filters");
     const currentFilter =
       getCurrentMenuItem.id !== "home" &&
       getCurrentMenuItem.id !== "products" &&
       getCurrentMenuItem.id !== "search"
-        ? {
-            category: [getCurrentMenuItem.id],
-          }
+        ? { category: [getCurrentMenuItem.id] }
         : null;
 
     sessionStorage.setItem("filters", JSON.stringify(currentFilter));
 
-    location.pathname.includes("listing") && currentFilter !== null
-      ? setSearchParams(
-          new URLSearchParams(`?category=${getCurrentMenuItem.id}`)
-        )
-      : navigate(getCurrentMenuItem.path);
+    if (getCurrentMenuItem.id === "search") {
+      navigate("/shop/search");
+    } else if (
+      location.pathname.includes("listing") &&
+      currentFilter !== null
+    ) {
+      setSearchParams(
+        new URLSearchParams(`?category=${getCurrentMenuItem.id}`)
+      );
+    } else {
+      navigate(getCurrentMenuItem.path);
+    }
   }
 
   return (
-    <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
+    <nav className="flex flex-col lg:mb-0 lg:items-center gap-6 lg:flex-row">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
-          className="text-sm font-medium cursor-pointer"
+          className={`text-sm font-semibold cursor-pointer transition-all duration-200 px-2 py-1 rounded-sm  ${
+            (location.pathname === "/shop/listing" &&
+              !activeCategory &&
+              menuItem.id === "products") ||
+            activeCategory === menuItem.id ||
+            (location.pathname === "/shop/home" && menuItem.id === "home") ||
+            (location.pathname === "/shop/search" && menuItem.id === "search")
+              ? "text-green-600"
+              : "text-gray-900 hover:text-green-600 hover:bg-green-100"
+          }`}
           key={menuItem.id}
         >
           {menuItem.label}
@@ -73,7 +90,6 @@ function HeaderRightContent() {
   const dispatch = useDispatch();
 
   function handleLogout() {
-    // dispatch(logoutUser());
     dispatch(resetTokenAndCredentials());
     sessionStorage.clear();
     navigate("/auth/login");
@@ -83,8 +99,6 @@ function HeaderRightContent() {
     dispatch(fetchCartItems(user?.id));
   }, [dispatch]);
 
-  console.log(cartItems, "sangam");
-
   return (
     <div className="flex lg:items-center lg:flex-row flex-col gap-4">
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
@@ -92,42 +106,40 @@ function HeaderRightContent() {
           onClick={() => setOpenCartSheet(true)}
           variant="outline"
           size="icon"
-          className="relative"
+          className="relative rounded-full border-gray-300 shadow-md hover:shadow-lg transition-all"
         >
           <ShoppingCart className="w-6 h-6" />
-          <span className="absolute top-[-5px] right-[2px] font-semibold text-sm">
+          <span className="absolute top-[-5px] right-[2px] font-semibold text-sm bg-red-500 text-white rounded-full px-2">
             {cartItems?.items?.length || 0}
           </span>
           <span className="sr-only">User cart</span>
         </Button>
         <UserCartWrapper
           setOpenCartSheet={setOpenCartSheet}
-          cartItems={
-            cartItems && cartItems.items && cartItems.items.length > 0
-              ? cartItems.items
-              : []
-          }
+          cartItems={cartItems?.items?.length ? cartItems.items : []}
         />
       </Sheet>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Avatar className="bg-black">
+          <Avatar className="bg-black rounded-full shadow-md hover:shadow-lg">
             <AvatarFallback className="bg-black text-white font-semibold">
               {user?.userName[0].toUpperCase()}
             </AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
-        <DropdownMenuContent side="right" className="w-56">
-          <DropdownMenuLabel>Logged in as {user?.userName}</DropdownMenuLabel>
+        <DropdownMenuContent side="right" className="w-56 shadow-lg">
+          <DropdownMenuLabel className="text-gray-800">
+            Logged in as {user?.userName}
+          </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => navigate("/shop/account")}>
-            <UserCog className="mr-2 h-4 w-4" />
+            <UserCog className="mr-2 h-4 w-4 text-gray-500" />
             Account
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleLogout}>
-            <LogOut className="mr-2 h-4 w-4" />
+            <LogOut className="mr-2 h-4 w-4 text-red-500" />
             Logout
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -137,33 +149,37 @@ function HeaderRightContent() {
 }
 
 function ShoppingHeader() {
-  const { isAuthenticated } = useSelector((state) => state.auth);
-
   return (
-    <header className="fixed top-0 shadow-sm z-40 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
+    <header className="fixed top-0 z-40 w-full bg-white/80 border-b border-gray-300 backdrop-blur-lg shadow-sm transition-all">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
-          {/* <HousePlug className="h-6 w-6" /> */}
-          <TbSquareLetterSFilled className="h-8 w-8" />
-          <span className="font-semibold">Swiftkart</span>
+          <TbSquareLetterSFilled className="h-8 w-8 text-green-600" />
+          <span className="text-xl font-semibold text-gray-800">Swiftkart</span>
         </Link>
+
+        {/* Center the categories */}
+        <div className="hidden lg:flex flex-1 justify-center">
+          <MenuItems />
+        </div>
+
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="lg:hidden">
-              <Menu className="h-6 w-6" />
+            <Button
+              variant="outline"
+              size="icon"
+              className="lg:hidden rounded-full shadow-md hover:shadow-lg transition-all"
+            >
+              <Menu className="h-6 w-6 text-gray-700" />
               <span className="sr-only">Toggle header menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-full max-w-xs">
+          <SheetContent side="left" className="w-full max-w-xs shadow-md">
             <MenuItems />
             <HeaderRightContent />
           </SheetContent>
         </Sheet>
-        <div className="hidden lg:block">
-          <MenuItems />
-        </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex lg:items-center gap-6">
           <HeaderRightContent />
         </div>
       </div>
