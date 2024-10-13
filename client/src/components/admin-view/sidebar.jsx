@@ -5,7 +5,7 @@ import {
   ShoppingBasket,
 } from "lucide-react";
 import { Fragment, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
 
 const adminSidebarMenuItems = [
@@ -29,9 +29,12 @@ const adminSidebarMenuItems = [
   },
 ];
 
-function MenuItems({ setOpen, data1 }) {
-  const [data, setData] = useState("");
+function MenuItems({ setOpen }) {
   const navigate = useNavigate();
+  let location = useLocation("");
+  console.log(location.pathname.includes("/products"));
+
+  // console.log(location?.toString?.includes("products"));
 
   return (
     <nav className="mt-8 flex-col flex gap-2">
@@ -39,13 +42,17 @@ function MenuItems({ setOpen, data1 }) {
         <div
           key={menuItem.id}
           onClick={() => {
-            setData(menuItem.id);
             navigate(menuItem.path);
             setOpen ? setOpen(false) : null;
           }}
-          className={`flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:bg-green-50 hover:text-green-600`}
+          className={`${
+            location.pathname.includes(menuItem.id)
+              ? "text-green-600 bg-green-50"
+              : ""
+          } flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:bg-green-50 hover:text-green-600`}
         >
           {menuItem.icon}
+
           <span>{menuItem.label}</span>
         </div>
       ))}
@@ -54,7 +61,6 @@ function MenuItems({ setOpen, data1 }) {
 }
 
 function AdminSideBar({ open, setOpen }) {
-  const [data, setData] = useState("");
   const navigate = useNavigate();
 
   return (
@@ -75,7 +81,6 @@ function AdminSideBar({ open, setOpen }) {
       <aside className="hidden w-64 flex-col border-r bg-background p-6 lg:flex">
         <div
           onClick={() => {
-            setData("dashboard");
             navigate("/admin/dashboard");
           }}
           className="flex cursor-pointer items-center gap-2"

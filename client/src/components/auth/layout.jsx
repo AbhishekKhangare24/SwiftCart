@@ -5,7 +5,7 @@ function AuthLayout() {
   return (
     <div className="flex min-h-screen w-[90%] m-auto bg-emerald-500">
       <div
-        className="hidden lg:flex items-center justify-center w-1/2 bg-red-300 px-96"
+        className="hidden lg:flex items-center justify-center w-1/2 bg-green-300 px-96"
         style={{
           backgroundImage: `url(${authImg})`,
           backgroundSize: "cover",
