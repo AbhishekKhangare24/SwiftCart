@@ -67,3 +67,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+.confetti {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  pointer-events: none;
+}
+
+.confetti div {
+  width: 10px;
+  height: 10px;
+  background: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: confetti-fall 1s linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translate(0, 0) rotate(0);
+  }
+  100% {
+    transform: translate(100px, 300px) rotate(720deg);
+  }
+}
