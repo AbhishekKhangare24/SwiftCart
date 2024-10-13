@@ -289,7 +289,7 @@ function App() {
             </svg> */}
           </div>
           <p className="mx-auto px-20 text-center">
-            This hosting is free and may take up to 30 seconds
+            This hosting is free and may take up to 30 seconds to load
           </p>
         </div>
       </Skeleton>
