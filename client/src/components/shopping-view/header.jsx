@@ -95,7 +95,7 @@ function HeaderRightContent() {
           className="relative"
         >
           <ShoppingCart className="w-6 h-6" />
-          <span className="absolute top-[-5px] right-[2px] font-bold text-sm">
+          <span className="absolute top-[-5px] right-[2px] font-semibold text-sm">
             {cartItems?.items?.length || 0}
           </span>
           <span className="sr-only">User cart</span>
@@ -113,7 +113,7 @@ function HeaderRightContent() {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar className="bg-black">
-            <AvatarFallback className="bg-black text-white font-extrabold">
+            <AvatarFallback className="bg-black text-white font-semibold">
               {user?.userName[0].toUpperCase()}
             </AvatarFallback>
           </Avatar>
@@ -145,7 +145,7 @@ function ShoppingHeader() {
         <Link to="/shop/home" className="flex items-center gap-2">
           {/* <HousePlug className="h-6 w-6" /> */}
           <TbSquareLetterSFilled className="h-8 w-8" />
-          <span className="font-bold">Swiftkart</span>
+          <span className="font-semibold">Swiftkart</span>
         </Link>
         <Sheet>
           <SheetTrigger asChild>

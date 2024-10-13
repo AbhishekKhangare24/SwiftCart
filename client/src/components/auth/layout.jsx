@@ -14,7 +14,7 @@ function AuthLayout() {
       >
         <div className="max-w-md space-y-6 text-center text-primary-foreground">
           <h1
-            className="text-4xl font-extrabold tracking-tight"
+            className="text-4xl font-semibold tracking-tight"
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
           >
             {/* Welcome to Swiftkart ECommerce Store */}

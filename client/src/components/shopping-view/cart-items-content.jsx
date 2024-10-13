@@ -79,7 +79,7 @@ function UserCartItemsContent({ cartItem }) {
         className="w-20 h-20 rounded object-cover"
       />
       <div className="flex-1">
-        <h3 className="font-extrabold">{cartItem?.title}</h3>
+        <h3 className="font-semibold">{cartItem?.title}</h3>
         <div className="flex items-center gap-2 mt-1">
           <Button
             variant="outline"
