@@ -34,7 +34,7 @@ function App() {
     dispatch(checkAuth(token));
   }, [dispatch]);
 
-  if (!isLoading)
+  if (isLoading)
     return (
       <Skeleton className="w-full h-screen flex justify-center">
         <div className="flex justify-center flex-col">

@@ -59,18 +59,18 @@ function MenuItems() {
   }
 
   return (
-    <nav className="flex flex-col lg:mb-0 lg:items-center gap-6 lg:flex-row">
+    <nav className="flex flex-col lg:mb-0 lg:items-center gap-4 lg:flex-row">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
-          className={`text-sm font-semibold cursor-pointer transition-all duration-200 px-2 py-1 rounded-sm  ${
+          className={`text-sm  font-semibold cursor-pointer transition-all duration-200 px-2 py-1 rounded-sm  ${
             (location.pathname === "/shop/listing" &&
               !activeCategory &&
               menuItem.id === "products") ||
             activeCategory === menuItem.id ||
             (location.pathname === "/shop/home" && menuItem.id === "home") ||
             (location.pathname === "/shop/search" && menuItem.id === "search")
-              ? "text-green-600"
+              ? "text-green-600 hover:bg-green-100"
               : "text-gray-900 hover:text-green-600 hover:bg-green-100"
           }`}
           key={menuItem.id}
@@ -100,7 +100,7 @@ function HeaderRightContent() {
   }, [dispatch]);
 
   return (
-    <div className="flex lg:items-center lg:flex-row flex-col gap-4">
+    <div className="flex lg:items-center py-4 lg:flex-row flex-col gap-4">
       <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
         <Button
           onClick={() => setOpenCartSheet(true)}
@@ -108,8 +108,8 @@ function HeaderRightContent() {
           size="icon"
           className="relative rounded-full border-gray-300 shadow-md hover:shadow-lg transition-all"
         >
-          <ShoppingCart className="w-6 h-6" />
-          <span className="absolute top-[-5px] right-[2px] font-semibold text-sm bg-red-500 text-white rounded-full px-2">
+          <ShoppingCart className="w-6 h-6 p-[0px]" />
+          <span className="absolute top-[-8px] right-[-5px] font-semibold text-sm bg-green-500 text-white rounded-full px-1.5">
             {cartItems?.items?.length || 0}
           </span>
           <span className="sr-only">User cart</span>
