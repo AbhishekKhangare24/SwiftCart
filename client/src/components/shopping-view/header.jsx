@@ -23,7 +23,7 @@ import UserCartWrapper from "./cart-wrapper";
 import { useEffect, useState } from "react";
 import { fetchCartItems } from "@/store/shop/cart-slice";
 import { Label } from "../ui/label";
-import { TbSquareLetterSFilled } from "react-icons/tb";
+import { GrSkype } from "react-icons/gr";
 
 function MenuItems() {
   const navigate = useNavigate();
@@ -153,7 +153,8 @@ function ShoppingHeader() {
     <header className="fixed top-0 z-40 w-full bg-white/80 border-b border-gray-300 backdrop-blur-lg shadow-sm transition-all">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
         <Link to="/shop/home" className="flex items-center gap-2">
-          <TbSquareLetterSFilled className="h-8 w-8" />
+          <GrSkype className="h-7 w-7" />
+
           <span className="text-xl font-semibold text-gray-800">Swiftkart</span>
         </Link>
 
