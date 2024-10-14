@@ -4,6 +4,7 @@ import { brandOptionsMap, categoryOptionsMap } from "@/config";
 import { Badge } from "../ui/badge";
 import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import { ShoppingCart } from "lucide-react";
 
 function ShoppingProductTile({
   product,
@@ -79,16 +80,12 @@ function ShoppingProductTile({
             onClick={() =>
               handleAddToCartClick(product?._id, product?.totalStock)
             }
-            className={`w-full transition-transform duration-300 relative ${
+            className={`w-full flex gap-2 transition-transform duration-300 relative ${
               addedToCart ? "animate-pulse bg-green-500" : ""
             }`}
           >
-            <FaShoppingCart
-              className={`inline-block mr-2 transition-transform duration-500 ${
-                addedToCart ? "animate-wiggle" : ""
-              }`}
-            />
-            {addedToCart ? "Adding!" : "Add to cart"}
+            <ShoppingCart className="h-5 w-5" />
+            <div>{addedToCart ? "Adding!" : "Add to cart"}</div>
           </Button>
         )}
       </CardFooter>
