@@ -9,8 +9,8 @@ function AdminProductTile({
   handleDelete,
 }) {
   return (
-    <Card className="w-full max-w-sm mx-auto">
-      <div>
+    <Card className="w-full rounded-md max-w-sm mx-auto flex flex-col transition-transform duration-200 hover:scale-105 hover:shadow-lg">
+      <div className="flex-grow">
         <div className="relative">
           <img
             src={product?.image}
@@ -28,26 +28,34 @@ function AdminProductTile({
             >
               ${product?.price}
             </span>
-            {product?.salePrice > 0 ? (
+            {product?.salePrice > 0 && (
               <span className="text-lg font-semibold">
                 ${product?.salePrice}
               </span>
-            ) : null}
+            )}
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between items-center">
+      </div>
+      <CardFooter className="sticky bottom-0 bg-white px-4 shadow-md z-10">
+        <div className="flex justify-between w-full">
           <Button
             onClick={() => {
               setOpenCreateProductsDialog(true);
               setCurrentEditedId(product?._id);
               setFormData(product);
             }}
+            className="flex-1 mr-2"
           >
             Edit
           </Button>
-          <Button onClick={() => handleDelete(product?._id)}>Delete</Button>
-        </CardFooter>
-      </div>
+          <Button
+            onClick={() => handleDelete(product?._id)}
+            className="flex-1 transition-colors duration-200 bg-red-600 text-white hover:bg-red-700"
+          >
+            Delete
+          </Button>
+        </div>
+      </CardFooter>
     </Card>
   );
 }

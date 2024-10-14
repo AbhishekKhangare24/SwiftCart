@@ -46,8 +46,8 @@ function App() {
               viewBox="0 0 200 200"
             >
               <rect
-                fill="#2BFF6E"
-                stroke="#2BFF6E"
+                fill="#00ff00"
+                stroke="#00ff00"
                 stroke-width="15"
                 width="30"
                 height="30"
@@ -65,8 +65,8 @@ function App() {
                 ></animate>
               </rect>
               <rect
-                fill="#2BFF6E"
-                stroke="#2BFF6E"
+                fill="#00ff00"
+                stroke="#00ff00"
                 stroke-width="15"
                 width="30"
                 height="30"

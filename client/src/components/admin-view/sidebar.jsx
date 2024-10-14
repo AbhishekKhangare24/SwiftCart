@@ -47,9 +47,9 @@ function MenuItems({ setOpen }) {
           }}
           className={`${
             location.pathname.includes(menuItem.id)
-              ? "text-gray-800 bg-green-100"
+              ? "text-gray-800 bg-gray-100"
               : ""
-          } flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:bg-green-100 hover:text-gray-800`}
+          } flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:bg-gray-100 hover:text-gray-800`}
         >
           {menuItem.icon}
 

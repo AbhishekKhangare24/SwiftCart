@@ -117,7 +117,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
 
   return (
     <Dialog open={open} onOpenChange={handleDialogClose}>
-      <DialogContent className="grid sm:grid-cols-2 gap-6 p-4 md:p-6 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw]">
+      <DialogContent className="grid rounded-md sm:grid-cols-2 gap-6 p-4 md:p-6 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw]">
         <div className="relative overflow-hidden rounded-lg">
           <img
             src={productDetails?.image}
@@ -155,7 +155,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
             </span>
           </div>
 
-          <div className="mt-4 flex gap-3">
+          <div className="mt-4 flex justify-center gap-3 w-full">
             {productDetails?.totalStock === 0 ? (
               <AnimatedButton disabled className="w-full">
                 Out of Stock
@@ -170,9 +170,9 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
                   )
                 }
               >
-                <div className="flex gap-2">
+                <div className="flex justify-center items-center md:px-20 sm:px-16 px-28 gap-2">
                   <ShoppingCart className="w-5 h-5" />
-                  <p> Add to Cart</p>
+                  <p>Add to Cart</p>
                 </div>
               </AnimatedButton>
             )}
@@ -221,7 +221,7 @@ function ProductDetailsDialog({ open, setOpen, productDetails }) {
                 placeholder="Write a review..."
               />
               <Button
-                className="mt-3"
+                className="mt-3 flex w-full"
                 onClick={handleAddReview}
                 disabled={!reviewMsg.trim()}
               >
