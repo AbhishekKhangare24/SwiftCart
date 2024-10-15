@@ -24,7 +24,7 @@ import { GiLargeDress, GiRunningShoe, GiSchoolBag } from "react-icons/gi";
 import { IoShirtOutline } from "react-icons/io5";
 import { TbCircleLetterH, TbSquareRoundedLetterL } from "react-icons/tb";
 import ShoppingProductTile from "@/components/shopping-view/product-tile";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { addToCart, fetchCartItems } from "@/store/shop/cart-slice";
 import { useToast } from "@/components/ui/use-toast";
 import ProductDetailsDialog from "@/components/shopping-view/product-details";
@@ -48,6 +48,7 @@ const brandsWithIcon = [
 ];
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const location = useLocation();
   const { productList, productDetails } = useSelector(
     (state) => state.shopProducts
   );
@@ -118,6 +119,10 @@ function ShoppingHome() {
   useEffect(() => {
     dispatch(getFeatureImages());
   }, [dispatch]);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location?.pathname]);
 
   return (
     <div className="flex flex-col min-h-screen">

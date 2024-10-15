@@ -19,7 +19,7 @@ import {
 import { ArrowUpDownIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 function createSearchParamsHelper(filterParams) {
   const queryParams = [];
@@ -49,12 +49,15 @@ function ShoppingListing() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
   const { toast } = useToast();
+  const location = useLocation();
 
   const categorySearchParam = searchParams.get("category");
 
   function handleSort(value) {
     setSort(value);
   }
+
+  console.log("updated...");
 
   function handleFilter(getSectionId, getCurrentOption) {
     let cpyFilters = { ...filters };
@@ -143,7 +146,9 @@ function ShoppingListing() {
     if (productDetails !== null) setOpenDetailsDialog(true);
   }, [productDetails]);
 
-  console.log(productList, "productListproductListproductList");
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location?.search]);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-6 p-4 md:p-6">
