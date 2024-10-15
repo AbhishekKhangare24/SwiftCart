@@ -29,7 +29,7 @@ function ShoppingProductTile({
             className="w-full h-[280px] object-cover rounded-t-lg transition-transform duration-500 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-black bg-opacity-30 rounded-t-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100 flex justify-center items-center">
-            <p className="text-white mx-4 align-middle text-center text-lg font-semibold">
+            <p className="text-gray-100 mx-4 align-middle text-center text-lg font-semibold">
               {product?.title}
             </p>
           </div>
@@ -49,7 +49,7 @@ function ShoppingProductTile({
           ) : null}
         </div>
         <CardContent className="p-4">
-          <h2 className="text-base font-semibold mb-2">{product?.title}</h2>
+          <h1 className="text-base mb-2 font-semibold">{product?.title}</h1>
           <div className="flex justify-between items-center mb-2 text-sm text-gray-600">
             <span>{categoryOptionsMap[product?.category]}</span>
             <span>{brandOptionsMap[product?.brand]}</span>

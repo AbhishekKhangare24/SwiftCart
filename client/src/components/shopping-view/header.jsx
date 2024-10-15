@@ -5,7 +5,7 @@ import {
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { useDispatch, useSelector } from "react-redux";
 import { shoppingViewHeaderMenuItems } from "@/config";
@@ -59,19 +59,19 @@ function MenuItems() {
   }
 
   return (
-    <nav className="flex flex-col lg:mb-0 lg:items-center gap-4 lg:flex-row">
+    <nav className="flex flex-col lg:mb-0 lg:items-center gap-2 lg:gap-4 lg:flex-row">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
           onClick={() => handleNavigate(menuItem)}
-          className={`text-sm  font-semibold cursor-pointer transition-all duration-200 px-2 py-1 rounded-sm  ${
+          className={`text-sm cursor-pointer transition-all duration-200 px-2 py-2 rounded-sm  ${
             (location.pathname === "/shop/listing" &&
               !activeCategory &&
               menuItem.id === "products") ||
             activeCategory === menuItem.id ||
             (location.pathname === "/shop/home" && menuItem.id === "home") ||
             (location.pathname === "/shop/search" && menuItem.id === "search")
-              ? "text-green-600 hover:bg-green-100"
-              : "text-gray-900 hover:text-green-600 hover:bg-green-100"
+              ? "text-green-600 hover:bg-gray-100"
+              : "text-gray-900 hover:bg-gray-100"
           }`}
           key={menuItem.id}
         >
@@ -152,7 +152,13 @@ function ShoppingHeader() {
   return (
     <header className="fixed top-0 z-40 w-full bg-white/80 border-b border-gray-300 backdrop-blur-lg shadow-sm transition-all">
       <div className="flex h-16 items-center justify-between px-4 md:px-6">
-        <Link to="/shop/home" className="flex items-center gap-2">
+        <Link
+          to="/shop/home"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="flex items-center gap-2"
+        >
           <GrSkype className="h-7 w-7 text-green-600" />
 
           <span className="text-xl font-semibold text-gray-800">Swiftkart</span>

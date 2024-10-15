@@ -44,7 +44,7 @@ function AdminOrdersView() {
         <CardTitle>All Orders</CardTitle>
       </CardHeader>
       <CardContent>
-        <Table>
+        <Table className="">
           <TableHeader>
             <TableRow>
               <TableHead>Order ID</TableHead>

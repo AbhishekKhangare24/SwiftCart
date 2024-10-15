@@ -18,12 +18,12 @@ function AuthLayout() {
             className="text-4xl font-semibold tracking-tight"
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
           >
-            {" "}
+            
             Welcome to
             <GrSkype className="h-7 ml-2 w-7 inline mb-0.5 text-green-600" />
             <span className="text-green-600 text-3xl letter-spacing-[10px]">
               wiftkart
-            </span>{" "}
+            </span>
             ECommerce
           </h1> */}
         </div>
@@ -32,9 +32,8 @@ function AuthLayout() {
         <div className="flex w-full gap-10 flex-col">
           <h1 className="text text-3xl font-semibold text-center">
             Welcome to
-            <GrSkype className="h-7 ml-2 w-7 inline mb-0.5 text-green-600" />
-            <span className="text-green-600 text-3xl letter-spacing-[10px]">
-              wiftkart
+            <span className="ml-2 text-green-600  py-1 text-3xl letter-spacing-[10px]">
+              Swiftkart
             </span>{" "}
             ECommerce
           </h1>

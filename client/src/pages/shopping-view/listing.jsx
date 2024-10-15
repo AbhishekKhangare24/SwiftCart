@@ -57,8 +57,6 @@ function ShoppingListing() {
     setSort(value);
   }
 
-  console.log("updated...");
-
   function handleFilter(getSectionId, getCurrentOption) {
     let cpyFilters = { ...filters };
     const indexOfCurrentSection = Object.keys(cpyFilters).indexOf(getSectionId);
