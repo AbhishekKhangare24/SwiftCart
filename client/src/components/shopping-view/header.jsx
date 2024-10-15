@@ -139,7 +139,7 @@ function HeaderRightContent() {
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleLogout}>
-            <LogOut className="mr-2 h-4 w-4 text-red-500" />
+            <LogOut className="mr-2 h-4 w-4 text-gray-500" />
             Logout
           </DropdownMenuItem>
         </DropdownMenuContent>
