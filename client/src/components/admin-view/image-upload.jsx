@@ -96,7 +96,9 @@ function ProductImageUpload({
             <span>Drag & drop or click to upload image</span>
           </Label>
         ) : imageLoadingState ? (
-          <Skeleton className="h-10 bg-gray-100" />
+          <Skeleton className="py-2 bg-gray-100 flex justify-center text-gray-500 top-[50%]">
+            Uploading...
+          </Skeleton>
         ) : (
           <div className="flex items-center justify-between">
             <div className="flex items-center">
