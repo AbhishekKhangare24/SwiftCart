@@ -4,9 +4,9 @@ import { GrSkype } from "react-icons/gr";
 
 function AuthLayout() {
   return (
-    <div className="flex min-h-screen w-[90%] m-auto bg-green-100">
+    <div className="flex min-h-screen w-[90%] m-auto">
       <div
-        className="hidden lg:flex items-center justify-center w-1/2 bg-green-100 px-96"
+        className="hidden lg:flex items-center justify-center w-1/2 px-96"
         style={{
           backgroundImage: `url(${authImg})`,
           backgroundSize: "cover",
