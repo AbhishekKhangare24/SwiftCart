@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import {
@@ -9,6 +10,7 @@ import {
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
+import { Eye, EyeOff } from "lucide-react";
 
 function CommonForm({
   formControls,
@@ -18,29 +20,68 @@ function CommonForm({
   buttonText,
   isBtnDisabled,
 }) {
+  const [showPasswordFields, setShowPasswordFields] = useState({});
+
+  function togglePasswordVisibility(name) {
+    setShowPasswordFields((prev) => ({
+      ...prev,
+      [name]: !prev[name],
+    }));
+  }
+
   function renderInputsByComponentType(getControlItem) {
     let element = null;
     const value = formData[getControlItem.name] || "";
 
     switch (getControlItem.componentType) {
       case "input":
-        element = (
-          <Input
-            name={getControlItem.name}
-            placeholder={getControlItem.placeholder}
-            id={getControlItem.name}
-            type={getControlItem.type}
-            value={value}
-            onChange={(event) =>
-              setFormData({
-                ...formData,
-                [getControlItem.name]: event.target.value,
-              })
-            }
-          />
-        );
-
+        element =
+          getControlItem.type === "password" ? (
+            <div className="relative">
+              <Input
+                name={getControlItem.name}
+                placeholder={getControlItem.placeholder}
+                id={getControlItem.name}
+                type={
+                  showPasswordFields[getControlItem.name] ? "text" : "password"
+                }
+                value={value}
+                onChange={(event) =>
+                  setFormData({
+                    ...formData,
+                    [getControlItem.name]: event.target.value,
+                  })
+                }
+              />
+              <button
+                type="button"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                onClick={() => togglePasswordVisibility(getControlItem.name)}
+              >
+                {showPasswordFields[getControlItem.name] ? (
+                  <EyeOff className="text-green-600 h-5 opacity-90" />
+                ) : (
+                  <Eye className="text-green-600 h-5 opacity-90" />
+                )}
+              </button>
+            </div>
+          ) : (
+            <Input
+              name={getControlItem.name}
+              placeholder={getControlItem.placeholder}
+              id={getControlItem.name}
+              type={getControlItem.type}
+              value={value}
+              onChange={(event) =>
+                setFormData({
+                  ...formData,
+                  [getControlItem.name]: event.target.value,
+                })
+              }
+            />
+          );
         break;
+
       case "select":
         element = (
           <Select
@@ -66,8 +107,8 @@ function CommonForm({
             </SelectContent>
           </Select>
         );
-
         break;
+
       case "textarea":
         element = (
           <Textarea
@@ -83,7 +124,6 @@ function CommonForm({
             }
           />
         );
-
         break;
 
       default:
