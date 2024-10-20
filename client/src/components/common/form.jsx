@@ -59,9 +59,9 @@ function CommonForm({
                 onClick={() => togglePasswordVisibility(getControlItem.name)}
               >
                 {showPasswordFields[getControlItem.name] ? (
-                  <EyeOff className="text-gray-500 hover:text-green-600 h-5 opacity-90" />
+                  <EyeOff className="text-gray-400 hover:text-green-600 h-5 opacity-90" />
                 ) : (
-                  <Eye className="text-gray-500 hover:text-green-600 h-5 opacity-90" />
+                  <Eye className="text-gray-400 hover:text-green-600 h-5 opacity-90" />
                 )}
               </button>
             </div>
