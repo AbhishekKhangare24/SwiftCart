@@ -25,6 +25,7 @@ function AuthRegister() {
         toast({
           title: "Registration successful!",
         });
+        // navigate("/auth/login");
         navigate("/shop/home");
       } else {
         toast({
