@@ -11,10 +11,11 @@ const registerUser = async (req, res) => {
     if (checkUser)
       return res.json({
         success: false,
-        message: "User Already exists with the same email! Please try again",
+        message: "User already exists with the same email! Please try again",
       });
 
     const hashPassword = await bcrypt.hash(password, 12);
+
     const newUser = new User({
       userName,
       email,
@@ -22,15 +23,34 @@ const registerUser = async (req, res) => {
     });
 
     await newUser.save();
+
+    const token = jwt.sign(
+      {
+        id: newUser._id,
+        role: newUser.role || "user",
+        email: newUser.email,
+        userName: newUser.userName,
+      },
+      "CLIENT_SECRET_KEY",
+      { expiresIn: "60m" }
+    );
+
     res.status(200).json({
       success: true,
-      message: "Registration successful",
+      message: "Registration successful!",
+      token,
+      user: {
+        id: newUser._id,
+        email: newUser.email,
+        role: newUser.role || "user",
+        userName: newUser.userName,
+      },
     });
   } catch (e) {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Some error occured",
+      message: "Some error occurred",
     });
   }
 };

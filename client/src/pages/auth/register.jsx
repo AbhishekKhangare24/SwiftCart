@@ -23,12 +23,13 @@ function AuthRegister() {
     dispatch(registerUser(formData)).then((data) => {
       if (data?.payload?.success) {
         toast({
-          title: data?.payload?.message,
+          title: "Registration successful!",
         });
-        navigate("/auth/login");
+        navigate("/shop/home");
       } else {
         toast({
-          title: data?.payload?.message,
+          title: "Registration failed",
+          description: data?.payload?.message || "Something went wrong!",
           variant: "destructive",
         });
       }
