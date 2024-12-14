@@ -1,4 +1,5 @@
 import CommonForm from "@/components/common/form";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { loginFormControls } from "@/config";
 import { loginUser } from "@/store/auth-slice";
@@ -13,6 +14,7 @@ const initialState = {
 
 function AuthLogin() {
   const [formData, setFormData] = useState(initialState);
+  const [activeRole, setActiveRole] = useState(""); // Track the active button
   const dispatch = useDispatch();
   const { toast } = useToast();
 
@@ -33,6 +35,11 @@ function AuthLogin() {
     });
   }
 
+  function handleRoleSelection(role, email, password) {
+    setActiveRole(role); 
+    setFormData({ email, password });
+  }
+
   return (
     <div className="mx-auto w-full max-w-md space-y-6">
       <div className="text-center">
@@ -48,6 +55,32 @@ function AuthLogin() {
             Register
           </Link>
         </p>
+      </div>
+
+      <div className="flex justify-between">
+        <span>Login as Default Account</span>
+        <span>
+          <button
+            className={`px-2 py-1 rounded-ssm ml-2 rounded-[4px] ${
+              activeRole === "admin" ? "bg-green-600 text-white " : "bg-gray-200 border-green-600"
+            }`}
+            onClick={() =>
+              handleRoleSelection("admin", "admin@gmail.com", "iamadmin")
+            }
+          >
+            Admin
+          </button>
+          <button
+            className={`px-2 py-1 rounded-ssm ml-2 rounded-[4px] ${
+              activeRole === "user" ? "bg-green-600 text-white" : "bg-gray-200 border-green-600"
+            }`}
+            onClick={() =>
+              handleRoleSelection("user", "user@gmail.com", "iamuser")
+            }
+          >
+            User
+          </button>
+        </span>
       </div>
       <CommonForm
         formControls={loginFormControls}
