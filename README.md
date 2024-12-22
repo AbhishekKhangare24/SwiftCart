@@ -6,17 +6,22 @@ This is a full-stack e-commerce application built using the MERN (MongoDB, Expre
 
 You can check out the live version of the app here: [Live Demo](https://swiftkart-ecommerce-frontend.onrender.com)
 
-For mock purchase in app, you can use this paypal credentials:
+For mock purchase in app, you can use below paypal credentials:
 
 - **PayPal Sandbox Email**: `sb-ns47qn33319299@personal.example.com`
 - **PayPal Sandbox Password**: `hB#^1Tsy`
-- 
-## Features
 
-- **User Authentication**: User login, signup, and logout functionalities.
-- **Product Management**: Admin panel for creating, updating, and deleting products.
-- **Shopping Cart**: Users can add products to their cart and proceed to checkout.
-- **MongoDB**: MongoDB is used for database management, storing user data, product details, and order information.
+## Features
+-  **User-Friendly Authentication**: Smooth login and registration for both admin and user roles.  
+- **Admin Panel**:  
+     **Dashboard**: Admins can manage and update the homepage banners effortlessly.  
+   - **Products Section**: Add, edit, delete, and update products to keep the catalog fresh and organized.  
+   - **Orders Section**: Track and manage user orders efficiently.  
+- **Cart Functionality**: Users can add products to their cart, update quantities, and proceed to checkout seamlessly.  
+- **Product Reviews**: Users can leave reviews for products after making a purchase, helping others make informed decisions.  
+- **Product Browsing & Management**: Explore a wide range of categories with seamless navigation.  
+- **Order History & Checkout**: Track past purchases and finalize orders effortlessly.  
+- **Payment Gateway Integration**: Experience a complete checkout process using PayPal’s sandbox. 
 
 ## Tech Stack
 
