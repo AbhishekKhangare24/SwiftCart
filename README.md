@@ -20,7 +20,7 @@ For mock purchase in app, you can use this paypal credentials:
 
 ## Tech Stack
 
-- **Frontend**: React.js, Next.js (App Router)
+- **Frontend**: React.js,
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
 - **Deployment**: render.com
