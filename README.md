@@ -4,8 +4,13 @@ This is a full-stack e-commerce application built using the MERN (MongoDB, Expre
 
 ## Live Demo
 
-You can check out the live version of the app here: [Live Demo](https://your-vercel-deployment-url.com)
+You can check out the live version of the app here: [Live Demo](https://swiftkart-ecommerce-frontend.onrender.com)
 
+For mock purchase in app, you can use this paypal credentials:
+
+- **PayPal Sandbox Email**: `sb-ns47qn33319299@personal.example.com`
+- **PayPal Sandbox Password**: `hB#^1Tsy`
+- 
 ## Features
 
 - **User Authentication**: User login, signup, and logout functionalities.
