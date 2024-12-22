@@ -2,6 +2,10 @@
 
 This is a full-stack e-commerce application built using the MERN (MongoDB, Express, React, Node.js) stack. The application features user authentication, product management, and a shopping cart system, making it a solid foundation for an online store.
 
+## Live Demo
+
+You can check out the live version of the app here: [Live Demo](https://your-vercel-deployment-url.com)
+
 ## Features
 
 - **User Authentication**: User login, signup, and logout functionalities.
