@@ -14,7 +14,7 @@ const initialState = {
 
 function AuthLogin() {
   const [formData, setFormData] = useState(initialState);
-  const [activeRole, setActiveRole] = useState(""); // Track the active button
+  const [activeRole, setActiveRole] = useState("manual"); // Set default to "manual"
   const dispatch = useDispatch();
   const { toast } = useToast();
 
@@ -36,8 +36,13 @@ function AuthLogin() {
   }
 
   function handleRoleSelection(role, email, password) {
-    setActiveRole(role); 
+    setActiveRole(role);
     setFormData({ email, password });
+  }
+
+  function handleManualSelection() {
+    setActiveRole("manual");
+    setFormData(initialState); // Reset the form to empty
   }
 
   return (
@@ -58,11 +63,13 @@ function AuthLogin() {
       </div>
 
       <div className="flex justify-between">
-        <span>Login as Default Account</span>
+        <span>Login as Default User</span>
         <span>
           <button
-            className={`px-2 py-1 rounded-ssm ml-2 rounded-[4px] ${
-              activeRole === "admin" ? "bg-green-600 text-white " : "bg-gray-200 border-green-600"
+            className={`px-2 hidden py-1 rounded-ssm ml-2 rounded-[4px] ${
+              activeRole === "admin"
+                ? "bg-green-600 text-white "
+                : "bg-gray-200 border-green-600"
             }`}
             onClick={() =>
               handleRoleSelection("admin", "admin@gmail.com", "iamadmin")
@@ -72,13 +79,25 @@ function AuthLogin() {
           </button>
           <button
             className={`px-2 py-1 rounded-ssm ml-2 rounded-[4px] ${
-              activeRole === "user" ? "bg-green-600 text-white" : "bg-gray-200 border-green-600"
+              activeRole === "user"
+                ? "bg-green-600 text-white"
+                : "bg-gray-200 border-green-600"
             }`}
             onClick={() =>
               handleRoleSelection("user", "user@gmail.com", "iamuser")
             }
           >
             User
+          </button>
+          <button
+            className={`px-2 py-1 rounded-ssm ml-2 rounded-[4px] ${
+              activeRole === "manual"
+                ? "bg-green-600 text-white"
+                : "bg-gray-200 border-green-600"
+            }`}
+            onClick={handleManualSelection}
+          >
+            Manual
           </button>
         </span>
       </div>
