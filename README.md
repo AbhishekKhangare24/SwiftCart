@@ -14,7 +14,7 @@ For mock purchase in app, you can use below paypal credentials:
 ## Features
 -  **User-Friendly Authentication**: Smooth login and registration for both admin and user roles.  
 - **Admin Panel**:  
-     **Dashboard**: Admins can manage and update the homepage banners effortlessly.  
+   - **Dashboard**: Admins can manage and update the homepage banners effortlessly.  
    - **Products Section**: Add, edit, delete, and update products to keep the catalog fresh and organized.  
    - **Orders Section**: Track and manage user orders efficiently.  
 - **Cart Functionality**: Users can add products to their cart, update quantities, and proceed to checkout seamlessly.  
