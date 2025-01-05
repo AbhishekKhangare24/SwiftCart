@@ -11,6 +11,16 @@ For mock purchase in app, you can use below paypal credentials:
 - **PayPal Sandbox Email**: `sb-ns47qn33319299@personal.example.com`
 - **PayPal Sandbox Password**: `hB#^1Tsy`
 
+## Screenshots
+- **Homepage**: 
+![Homepage Screenshot](./client/public/home.png)
+- **Cart**: 
+![Cart Screenshot](./client/public/cart.png)
+- **Admin Panel Dashboard**: 
+![Admin Panel Screenshot](./client/public/admin-panel.png)
+
+
+
 ## Features
 -  **User-Friendly Authentication**: Smooth login and registration for both admin and user roles.  
 - **Admin Panel**:  
