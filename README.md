@@ -13,7 +13,7 @@ For mock purchase in app, you can use below paypal credentials:
 
 ## Screenshots
 - **Homepage**: 
-![Homepage Screenshot](./client/public/home.png)
+![Homepage Screenshot](./client/public/home.jpg)
 - **Cart**: 
 ![Cart Screenshot](./client/public/cart.png)
 - **Admin Panel Dashboard**: 
